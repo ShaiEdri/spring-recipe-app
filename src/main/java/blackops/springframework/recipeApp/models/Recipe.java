@@ -23,9 +23,10 @@ public class Recipe {
     private Notes notes;
     @Lob
     private Byte[] image;
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "recipe")
+    private Set<Ingredient> ingredients;
     @Enumerated(value = EnumType.STRING)
-
+    private Difficulty difficulty;
 
     public Long getId() {
         return id;
@@ -104,5 +105,13 @@ public class Recipe {
 
     public void setImage(Byte[] image) {
         this.image = image;
+    }
+
+    public Set<Ingredient> getIngredients() {
+        return ingredients;
+    }
+
+    public void setIngredients(Set<Ingredient> ingredients) {
+        this.ingredients = ingredients;
     }
 }
