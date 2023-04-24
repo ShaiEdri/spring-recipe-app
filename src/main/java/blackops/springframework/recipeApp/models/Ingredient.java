@@ -1,17 +1,27 @@
 package blackops.springframework.recipeApp.models;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 
 @Entity
 public class Ingredient {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private String description;
     @ManyToOne
     private Recipe recipe;
-    private Integer amount;
+    private BigDecimal amount;
     @OneToOne
     private UnitOfMeasure uom;
+
+    public Ingredient(){}
+    public Ingredient(String description, Recipe recipe, BigDecimal amount, UnitOfMeasure uom) {
+        this.description = description;
+        this.recipe = recipe;
+        this.amount = amount;
+        this.uom = uom;
+    }
 
     public Long getId() {
         return id;
@@ -19,6 +29,14 @@ public class Ingredient {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public Recipe getRecipe() {
@@ -29,11 +47,11 @@ public class Ingredient {
         this.recipe = recipe;
     }
 
-    public Integer getAmount() {
+    public BigDecimal getAmount() {
         return amount;
     }
 
-    public void setAmount(Integer amount) {
+    public void setAmount(BigDecimal amount) {
         this.amount = amount;
     }
 
