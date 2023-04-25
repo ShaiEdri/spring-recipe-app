@@ -23,7 +23,7 @@ class RecipeServiceImplTest {
         //Manual: recipeRepository = Mockito.mock(recipeRepository.getClass());
         //Auto :
         MockitoAnnotations.openMocks(this);
-        recipeService = new RecipeServiceImpl(recipeRepository);
+        recipeService = new RecipeServiceImpl(recipeRepository, recipeCommandToRecipe, recipeToRecipeCommand);
     }
     @Test
     void getRecipes() {

@@ -19,7 +19,7 @@ public class Recipe{
     private String url;
     @Lob
     private String directions;
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "recipe")
+    @OneToOne(cascade = CascadeType.ALL)
     private Notes notes;
     @Lob
     private Byte[] image;
