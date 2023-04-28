@@ -37,11 +37,31 @@ public class RecipeServiceImpl implements RecipeService {
     }
 
     @Override
-    public Recipe findById(long l) {
+    public RecipeCommand findCommandById(Long id) {
+        return recipeToRecipeCommand.convert(findById(id));
+    }
+
+    @Override
+    public void deleteById(Long l) {
+        recipeRepository.deleteById(l);
+    }
+
+    @Override
+    public void deleteAll() {
+        recipeRepository.deleteAll();
+    }
+
+    @Override
+    public Recipe findById(Long l) {
         Optional<Recipe> recipeOptional = recipeRepository.findById(l);
         if (!recipeOptional.isPresent()){
             throw new RuntimeException("Recipe not found!");
         }
         return recipeOptional.get();
+    }
+
+    @Override
+    public Set<Recipe> findByPrepTimeLessThan(Integer prepTime) {
+        return recipeRepository.findByPrepTimeLessThan(prepTime);
     }
 }

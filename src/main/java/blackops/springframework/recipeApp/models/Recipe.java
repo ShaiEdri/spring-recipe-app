@@ -1,10 +1,12 @@
 package blackops.springframework.recipeApp.models;
 
+import lombok.ToString;
 import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 import java.util.*;
 
+@ToString
 @Entity
 public class Recipe{
     @Id
@@ -134,5 +136,18 @@ public class Recipe{
 
     public void setCategories(Set<Category> categories) {
         this.categories = categories;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Recipe recipe = (Recipe) o;
+        return id.equals(recipe.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return id.hashCode();
     }
 }

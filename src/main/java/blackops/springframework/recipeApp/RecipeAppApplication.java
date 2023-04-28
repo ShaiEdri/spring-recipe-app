@@ -11,6 +11,10 @@ public class RecipeAppApplication {
 	public static void main(String[] args) {
 		Logger logger = LogManager.getLogger();
 		SpringApplication.run(RecipeAppApplication.class, args);
+
+	}
+	private static void checkBeansPresence(String... beans){
+
 	}
 
 }
